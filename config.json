@@ -22,7 +22,7 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "uri": "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/ChinaMax_IPv4.txt",
         "onlyIPType": "ipv4"
       }
     },
@@ -31,16 +31,7 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "uri": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china.txt",
-        "onlyIPType": "ipv4"
-      }
-    },
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "name": "cn",
-        "uri": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/ChinaMax_IPv6.txt",
         "onlyIPType": "ipv6"
       }
     },
@@ -48,16 +39,8 @@
       "type": "text",
       "action": "add",
       "args": {
-        "name": "cloudflare",
-        "uri": "https://www.cloudflare.com/ips-v4"
-      }
-    },
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "name": "cloudflare",
-        "uri": "https://www.cloudflare.com/ips-v6"
+        "name": "private",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/Lan.txt"
       }
     },
     {
@@ -67,17 +50,6 @@
         "name": "telegram",
         "uri": "https://core.telegram.org/resources/cidr.txt"
       }
-    },
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "inputDir": "./data"
-      }
-    },
-    {
-      "type": "private",
-      "action": "add"
     }
   ],
   "output": [
@@ -85,40 +57,8 @@
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
-        "outputName": "geoip.dat"
-      }
-    },
-    {
-      "type": "v2rayGeoIPDat",
-      "action": "output",
-      "args": {
-        "outputName": "geoip-only-cn-private.dat",
-        "wantedList": ["cn", "private"]
-      }
-    },
-    {
-      "type": "v2rayGeoIPDat",
-      "action": "output",
-      "args": {
-        "outputName": "geoip-asn.dat",
-        "wantedList": [
-          "cloudflare",
-          "cloudfront",
-          "facebook",
-          "fastly",
-          "google",
-          "netflix",
-          "telegram",
-          "twitter"
-        ]
-      }
-    },
-    {
-      "type": "v2rayGeoIPDat",
-      "action": "output",
-      "args": {
-        "oneFilePerList": true,
-        "wantedList": ["cn", "private"]
+        "outputName": "geoip.dat",
+        "wantedList": ["cn", "private", "telegram"]
       }
     },
     {
@@ -126,43 +66,7 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
-        "overwriteList": [
-          "cn",
-          "private",
-          "cloudflare",
-          "cloudfront",
-          "facebook",
-          "fastly",
-          "google",
-          "netflix",
-          "telegram",
-          "twitter"
-        ]
-      }
-    },
-    {
-      "type": "maxmindMMDB",
-      "action": "output",
-      "args": {
-        "outputName": "Country-only-cn-private.mmdb",
-        "wantedList": ["cn", "private"]
-      }
-    },
-    {
-      "type": "maxmindMMDB",
-      "action": "output",
-      "args": {
-        "outputName": "Country-asn.mmdb",
-        "wantedList": [
-          "cloudflare",
-          "cloudfront",
-          "facebook",
-          "fastly",
-          "google",
-          "netflix",
-          "telegram",
-          "twitter"
-        ]
+        "wantedList": ["cn", "private", "telegram"]
       }
     },
     {
