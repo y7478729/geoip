@@ -24,7 +24,7 @@
         "name": "cn",
         "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/ChinaMax_IP.txt"
       }
-    }
+    },
     {
       "type": "text",
       "action": "add",
