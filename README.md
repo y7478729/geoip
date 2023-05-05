@@ -7,7 +7,7 @@
 ```
 2. 每天早上 3 点（北京时间）自动构建
 3. `GEOIP:cn` 源采用 [blackmatrix7/ios_rule_script/ChinaMax](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)（ChinaMax_IP.txt）
-4. `geosite:lan` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)（IP 部分）
+4. `GEOIP:lan` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)（IP 部分）
 # 二、 下载
 ## 1. geoip.dat
 ① GitHub 源：https://github.com/DustinWin/clash-geoip/releases/download/latest/geoip.dat  
