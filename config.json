@@ -31,7 +31,7 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "uri": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/ChinaMax_IPv6.txt",
         "onlyIPType": "ipv6"
       }
     },
@@ -49,13 +49,6 @@
       "args": {
         "name": "telegram",
         "uri": "https://core.telegram.org/resources/cidr.txt"
-      }
-    },
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "inputDir": "./data"
       }
     }
   ],
