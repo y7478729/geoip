@@ -26,8 +26,12 @@
       }
     },
     {
-      "type": "private",
-      "action": "add"
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "lan",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/Lan.txt"
+      }
     },
     {
       "type": "text",
@@ -44,7 +48,7 @@
       "action": "output",
       "args": {
         "outputName": "geoip.dat",
-        "wantedList": ["cn", "private", "telegram"]
+        "wantedList": ["cn", "lan", "telegram"]
       }
     },
     {
@@ -52,7 +56,7 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
-        "wantedList": ["cn", "private", "telegram"]
+        "wantedList": ["cn", "lan", "telegram"]
       }
     },
     {
