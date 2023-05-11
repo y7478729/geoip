@@ -32,7 +32,7 @@ jobs:
       - name: Download IPs
         env:
           SED1: sed '/^\s*#/d' | sed '/^::/d'
-          SED2: sed '/^\s*#/d' | sed '/^DOMAIN/d' | sed 's/^[^,]*,\([^,]*\),.*$/\1/'
+          SED2: sed '/^\s*#/d' | sed '/^DOMAIN/d' | sed 's/^[^,]*,\([^,]*\),.*$/\1/' | sed '/^::/d'
         run: |
           echo "upx_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
           mkdir -p ./IPs
