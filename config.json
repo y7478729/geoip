@@ -13,14 +13,7 @@
       "type": "cutter",
       "action": "remove",
       "args": {
-        "onlyIPType": "ipv4"
-      }
-    },
-    {
-      "type": "cutter",
-      "action": "remove",
-      "args": {
-        "onlyIPType": "ipv6"
+        "wantedList": ["cn"]
       }
     },
     {
