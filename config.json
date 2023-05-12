@@ -18,14 +18,6 @@
       }
     },
     {
-      "type": "cutter",
-      "action": "remove",
-      "args": {
-        "wantedList": ["cn"],
-        "onlyIPType": "ipv6"
-      }
-    },
-    {
       "type": "text",
       "action": "add",
       "args": {
