@@ -64,7 +64,7 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
-        "overwriteList": ["cn", "lanip", "telegram"]
+        "overwriteList": ["cn", "lan", "telegram"]
       }
     },
     {
