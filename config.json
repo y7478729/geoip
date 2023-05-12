@@ -13,14 +13,23 @@
       "type": "cutter",
       "action": "remove",
       "args": {
-        "wantedList": ["cn"]
+        "wantedList": ["cn"],
+        "onlyIPType": "ipv4"
+      }
+    },
+    {
+      "type": "cutter",
+      "action": "remove",
+      "args": {
+        "wantedList": ["cn"],
+        "onlyIPType": "ipv6"
       }
     },
     {
       "type": "text",
       "action": "add",
       "args": {
-        "name": "cn",
+        "name": "cnip",
         "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/ChinaMax_IP.txt"
       }
     },
@@ -28,7 +37,7 @@
       "type": "text",
       "action": "add",
       "args": {
-        "name": "lan",
+        "name": "lanip",
         "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/Lan.txt"
       }
     },
@@ -47,7 +56,7 @@
       "action": "output",
       "args": {
         "outputName": "geoip.dat",
-        "wantedList": ["cn", "lan", "telegram"]
+        "wantedList": ["cnip", "lanip", "telegram"]
       }
     },
     {
@@ -55,7 +64,7 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
-        "wantedList": ["cn", "lan", "telegram"]
+        "overwriteList": ["cnip", "lanip", "telegram"]
       }
     },
     {
