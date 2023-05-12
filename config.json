@@ -37,7 +37,7 @@
       "type": "text",
       "action": "add",
       "args": {
-        "name": "lanip",
+        "name": "lan",
         "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/Lan.txt"
       }
     },
@@ -56,7 +56,7 @@
       "action": "output",
       "args": {
         "outputName": "geoip.dat",
-        "wantedList": ["cn", "lanip", "telegram"]
+        "wantedList": ["cn", "lan", "telegram"]
       }
     },
     {
