@@ -20,7 +20,7 @@
       "type": "text",
       "action": "add",
       "args": {
-        "name": "cn-ip",
+        "name": "cnip",
         "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/ChinaMax_IP.txt"
       }
     },
@@ -28,7 +28,7 @@
       "type": "text",
       "action": "add",
       "args": {
-        "name": "lan-ip",
+        "name": "lanip",
         "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/Lan.txt"
       }
     },
@@ -47,7 +47,7 @@
       "action": "output",
       "args": {
         "outputName": "geoip.dat",
-        "wantedList": ["cn-ip", "lan-ip", "telegram"]
+        "wantedList": ["cnip", "lanip", "telegram"]
       }
     },
     {
@@ -55,7 +55,7 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
-        "wantedList": ["cn-ip", "lan-ip", "telegram"]
+        "wantedList": ["cnip", "lanip", "telegram"]
       }
     },
     {
