@@ -1,7 +1,17 @@
 name: Delete old workflows
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 5'
+    - cron: "0 19 * * *"
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - ".gitignore"
+      - "config-example.json"
+      - "LICENSE"
+      - "README.md"
+      - ".github/dependabot.yml"
 
 jobs:
   del_runs:
