@@ -34,7 +34,7 @@ jobs:
           SED1: sed '/^\s*#/d' | sed '/^::/d'
           SED2: sed '/^\s*#/d' | sed '/^DOMAIN/d' | sed 's/^[^,]*,\([^,]*\),.*$/\1/' | sed '/^::/d'
         run: |
-          echo "upx_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
+          echo "update_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
           mkdir -p ./IPs
           rm -rf ./IPs/*
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.txt | ${{ env.SED1 }} > ./IPs/ChinaMax_IP.txt
@@ -44,7 +44,7 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git add . && git commit -m "更新于 ${upx_version}" || exit 0
+          git add . && git commit -m "更新于 ${update_version}" || exit 0
           git push
 
       - name: Set up Go
