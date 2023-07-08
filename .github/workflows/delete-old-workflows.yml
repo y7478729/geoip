@@ -16,4 +16,4 @@ jobs:
           token: ${{ github.token }}
           repository: DustinWin/clash-geoip
           retain_days: 3
-          keep_minimum_runs: 3
+          keep_minimum_runs: 1
