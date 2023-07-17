@@ -114,6 +114,15 @@ jobs:
           curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=${LICENSE_KEY}&suffix=tar.gz" -o GeoLite2-Country.tar.gz
           curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip" -o GeoLite2-Country-CSV.zip
 
+      - name: Convert to Meta-geoip
+        run: |
+          mkdir -p ./meta-geoip
+          cd ./meta-geoip || exit 1
+          go install -v github.com/metacubex/geo/cmd/geo
+          cp ./output/dat/*.dat ./meta-geoip
+          geo convert ip -i v2ray -o meta ./geoip.dat
+          mv ./meta-geoip/*.dat ./output/dat
+
       - name: Move files to publish directory
         run: |
           mkdir -p publish
