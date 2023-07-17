@@ -117,8 +117,8 @@ jobs:
       - name: Convert to Meta-geoip
         run: |
           go get github.com/metacubex/geo/cmd/geo
-          mv ./output/dat/*.dat ./cmd/geo/internal/convert
-          cd ./cmd/geo/internal/convert
+          mv ./output/dat/*.dat ./geo
+          cd ./geo
           geo convert ip -i v2ray -o meta ./geoip.dat
           mv *.dat ./output/dat
 
