@@ -12,6 +12,7 @@ on:
       - "LICENSE"
       - "README.md"
       - ".github/dependabot.yml"
+      - ".github/workflows/delete-old-workflows.yml"
 jobs:
   build:
     name: Build
@@ -45,7 +46,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add . && git commit -m "更新于 ${update_version}" || exit 0
-          git push
+          git push -f
 
       - name: Set up Go
         uses: actions/setup-go@v4
