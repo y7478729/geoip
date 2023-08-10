@@ -16,21 +16,10 @@
 ## 2. Country.mmdb
 ① GitHub 源：https://github.com/DustinWin/clash-geoip/releases/download/latest/Country.mmdb  
 ② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/Country.mmdb
-# 三、 导入
-## 1. 导入 ShellClash
+# 三、 导入 [ShellClash](https://github.com/juewuy/ShellClash)
 连接 SSH 后执行如下命令：
 ```
 curl -o $clashdir/GeoIP.dat -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.dat
 curl -o $clashdir/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/Country.mmdb
 $clashdir/start.sh restart
 ```
-## 2. 导入 Clash Verge（Windows 端）
-首次使用可进入“配置”，新建”Merge“类型的配置，保存后进入文件夹 *%USERPROFILE%\.config\clash-verge\profiles*，可以看到这里新增了一个.yaml 文件，复制其文件名并替换下面命令中的{文件名}  
-编辑文本文档，粘贴如下内容：
-```
-curl -o %USERPROFILE%\.config\clash-verge\geoip.dat -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.dat
-curl -o %USERPROFILE%\.config\clash-verge\Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/Country.mmdb
-copy /y "%USERPROFILE%\.config\clash-verge\geoip.dat" "%PROGRAMFILES%\Clash Verge\resources"
-copy /y "%USERPROFILE%\.config\clash-verge\Country.mmdb" "%PROGRAMFILES%\Clash Verge\resources"
-```
-另存为.bat 文件，右击该文件，选择以管理员身份运行
