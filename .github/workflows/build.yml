@@ -45,7 +45,7 @@ jobs:
         run: |
           echo "update_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
           mkdir -p ./CN_IP/IPv4 ./CN_IP/IPv6
-          rm -rf ./CN_IP/*
+          rm -f ./CN_IP/IPv4/* ./CN_IP/IPv6/*
           curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}' > ./CN_IP/IPv4/cn_ip.txt
           curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' >> ./CN_IP/IPv6/cn_ip.txt
 
