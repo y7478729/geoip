@@ -51,7 +51,7 @@ jobs:
 
       - name: Build geoip files
         run: |
-          go run ./mydata
+          go run ./
 
       - name: Verify mmdb files
         run: |
