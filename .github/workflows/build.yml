@@ -42,13 +42,16 @@ jobs:
         shell: bash
 
       - name: Generate cn_ip
+        env:
+          SED: awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}'
         run: |
           echo "update_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
-          mkdir -p ./CN_IP/IPv4 ./CN_IP/IPv6
-          rm -f ./CN_IP/IPv4/* ./CN_IP/IPv6/*
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}' | awk -F'[.]' '$1 < 110' > ./CN_IP/IPv4/cn_ip1.txt
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}' | awk -F'[.]' '$1 >= 110' > ./CN_IP/IPv4/cn_ip2.txt
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' >> ./CN_IP/IPv6/cn_ip.txt
+          mkdir -p ./CN_IP/
+          rm -f ./CN_IP/*
+          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk -F'[.]' '$1 < 103' > ./CN_IP/cn_ip1.txt
+          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk '/^103\./' > ./CN_IP/cn_ip2.txt
+          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk -F'[.]' '$1 > 103' > ./CN_IP/cn_ip3.txt
+          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' > ./CN_IP/IPv6/cn_ip4.txt
 
       - name: Commit and push
         run: |
