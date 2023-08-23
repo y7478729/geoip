@@ -41,6 +41,11 @@ jobs:
           echo "RELEASE_NAME=latest" >> $GITHUB_ENV
         shell: bash
 
+      - name: Fetch lists from ripe.net
+        run: |
+          chmod +x asn.sh
+          ./asn.sh
+
       - name: Append more CIDRs
         run: |
           curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}' > data/cn
