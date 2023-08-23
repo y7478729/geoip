@@ -25,14 +25,14 @@
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
-        "outputName": "geoip.dat",
+        "outputName": "geoip.dat"
       }
     },
     {
       "type": "maxmindMMDB",
       "action": "output",
       "args": {
-        "outputName": "Country.mmdb",
+        "outputName": "Country.mmdb"
       }
     },
     {
