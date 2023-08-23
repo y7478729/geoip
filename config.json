@@ -8,6 +8,14 @@
       }
     },
     {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cn",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/CN_IP/cn_ip.txt"
+      }
+    },
+    {
       "type": "private",
       "action": "add"
     }
@@ -18,7 +26,6 @@
       "action": "output",
       "args": {
         "outputName": "geoip.dat",
-        "wantedList": ["cn", "lanip", "telegram"]
       }
     },
     {
@@ -26,7 +33,6 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
-        "overwriteList": ["cn", "lanip", "telegram"]
       }
     },
     {
