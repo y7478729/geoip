@@ -48,7 +48,7 @@ jobs:
           echo "update_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
           mkdir -p ./CN_IP
           rm -f ./CN_IP/*
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk -F'[.]' '$1 < 103' > ./CN_IP/cn_ip1.txt
+          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk -F'[.]' '$1 < 80' > ./CN_IP/cn_ip1.txt
           curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk '/^103\./' > ./CN_IP/cn_ip2.txt
           curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk -F'[.]' '$1 > 103' > ./CN_IP/cn_ip3.txt
           curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' > ./CN_IP/cn_ip4.txt
