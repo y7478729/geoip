@@ -6,6 +6,10 @@
       "args": {
         "inputDir": "./data"
       }
+    },
+    {
+      "type": "private",
+      "action": "add"
     }
   ],
   "output": [
@@ -13,16 +17,14 @@
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
-        "outputName": "geoip.dat",
-        "wantedList": ["cn", "lanip", "telegram"]
+        "outputName": "geoip.dat"
       }
     },
     {
       "type": "maxmindMMDB",
       "action": "output",
       "args": {
-        "outputName": "Country.mmdb",
-        "wantedList": ["cn", "lanip", "telegram"]
+        "outputName": "Country.mmdb"
       }
     },
     {
