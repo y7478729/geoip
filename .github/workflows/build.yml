@@ -41,7 +41,7 @@ jobs:
           echo "RELEASE_NAME=latest" >> $GITHUB_ENV
         shell: bash
 
-      - name: Generate cn ip
+      - name: Generate cn_ip
         run: |
           echo "update_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
           mkdir -p ./CN_IP
