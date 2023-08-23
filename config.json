@@ -12,7 +12,17 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/CN_IP/cn_ip.txt"
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/CN_IP/IPv4/cn_ip.txt",
+        "onlyIPType": "ipv4"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cn",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/CN_IP/IPv6/cn_ip.txt",
+        "onlyIPType": "ipv6"
       }
     },
     {
