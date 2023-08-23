@@ -1,43 +1,10 @@
 {
   "input": [
     {
-      "type": "maxmindGeoLite2CountryCSV",
-      "action": "add",
-      "args": {
-        "country": "./geolite2/GeoLite2-Country-Locations-en.csv",
-        "ipv4": "./geolite2/GeoLite2-Country-Blocks-IPv4.csv",
-        "ipv6": "./geolite2/GeoLite2-Country-Blocks-IPv6.csv"
-      }
-    },
-    {
-      "type": "cutter",
-      "action": "remove",
-      "args": {
-        "wantedList": ["cn"]
-      }
-    },
-    {
       "type": "text",
       "action": "add",
       "args": {
-        "name": "cn",
-        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/ChinaMax_IP.txt"
-      }
-    },
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "name": "lanip",
-        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/Lan_IP.txt"
-      }
-    },
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "name": "telegram",
-        "uri": "https://core.telegram.org/resources/cidr.txt"
+        "inputDir": "./data"
       }
     }
   ],
