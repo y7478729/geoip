@@ -6,7 +6,7 @@
   - GEOIP,telegram,✈️ Telegram IP
 ```
 2. 每天早上 3 点（北京时间）自动构建
-3. `geoip:cn` 源采用 [亚太互联网络信息中心（APNIC）](http://ftp.apnic.net/stats/apnic/delegated-apnic-latest)
+3. `geoip:cn` 源采用[亚太互联网络信息中心（APNIC）](http://ftp.apnic.net/stats/apnic/delegated-apnic-latest)
 4. `geoip:lanip` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)（IP 部分）
 5. `geoip:telegram` 源采用 [Telegram IP](https://core.telegram.org/resources/cidr.txt)
 # 二、 下载
