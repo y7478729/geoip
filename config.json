@@ -16,7 +16,6 @@
         "onlyIPType": "ipv4"
       }
     },
-    },
     {
       "type": "text",
       "action": "add",
