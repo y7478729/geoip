@@ -8,14 +8,6 @@
       }
     },
     {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "name": "cn",
-        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/CN_IP/cn_ip5.txt"
-      }
-    },
-    {
       "type": "private",
       "action": "add"
     }
