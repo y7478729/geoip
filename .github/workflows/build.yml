@@ -41,29 +41,6 @@ jobs:
           echo "RELEASE_NAME=latest" >> $GITHUB_ENV
         shell: bash
 
-      - name: Generate cn_ip
-        env:
-          SED: awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}'
-        run: |
-          echo "update_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
-          mkdir -p ./CN_IP
-          rm -f ./CN_IP/*
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk -F'[.]' '$1 < 80' > ./CN_IP/cn_ip1.txt
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk '/^103\./' > ./CN_IP/cn_ip2.txt
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | ${{ env.SED }} | awk -F'[.]' '$1 > 103' > ./CN_IP/cn_ip3.txt
-          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' > ./CN_IP/cn_ip4.txt
-          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.txt | grep -v "#" | grep -v '^::' > ./CN_IP/cn_ip5.txt
-          cat <<EOF >> ./CN_IP/cn_ip5.txt
-          1.118.129.0/17
-          EOF
-
-      - name: Commit and push
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add . && git commit -m "更新于 ${update_version}" || exit 0
-          git push -f
-
       - name: Fetch lists from ripe.net
         run: |
           chmod +x asn.sh
@@ -71,6 +48,8 @@ jobs:
 
       - name: Append more CIDRs
         run: |
+          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}' > data/cn
+          curl -sSL http://ftp.apnic.net/stats/apnic/delegated-apnic-latest | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' >> data/cn
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml | grep IP-CIDR | grep -v "#" | sed '/^\s*$/d' | sed 's/.*,//' > data/lanip
           curl -sSL https://core.telegram.org/resources/cidr.txt > data/telegram
 
