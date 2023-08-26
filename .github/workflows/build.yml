@@ -68,6 +68,7 @@ jobs:
         run: |
           mkdir -p publish
           mv ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
+          cp -fpPR ./output/text ./publish
 
       - name: Git push assets to "release" branch
         run: |
