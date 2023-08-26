@@ -56,10 +56,7 @@
     },
     {
       "type": "text",
-      "action": "output",
-      "args": {
-        "name": "cnip"
-      }
+      "action": "output"
     }
   ]
 }
