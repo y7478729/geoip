@@ -66,9 +66,11 @@ jobs:
 
       - name: Move files to publish directory
         run: |
-          mkdir -p publish
+          mkdir -p publish/text
           mv ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
-          cp -fpPR ./output/text ./publish
+          cp -f ./output/text/cnip.txt ./publish/text
+          cp -f ./output/text/lanip.txt ./publish/text
+          cp -f ./output/text/telegramip.txt ./publish/text
 
       - name: Git push assets to "release" branch
         run: |
