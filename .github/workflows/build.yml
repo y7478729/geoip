@@ -50,9 +50,9 @@ jobs:
         env:
           SED: grep -v "#" | sed '/^\s*$/d'
         run: |
-          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.txt | grep -v '^::' | ${{ env.SED }} >> data/cn
-          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml | grep "IP-CIDR" | sed 's/.*,//g' | ${{ env.SED }} >> data/lan
-          curl -sSL https://core.telegram.org/resources/cidr.txt >> data/telegram
+          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.txt | grep -v '^::' | ${{ env.SED }} >> data/cnip
+          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml | grep "IP-CIDR" | sed 's/.*,//g' | ${{ env.SED }} >> data/lanip
+          curl -sSL https://core.telegram.org/resources/cidr.txt >> data/telegramip
 
       - name: Build geoip files
         run: |
