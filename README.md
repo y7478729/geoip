@@ -1,12 +1,12 @@
 # 一、 说明
 1. 根据 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip) 进行深度定制，**有且仅有如下分类**：
 ```
-  - GEOIP,cnip,🇨🇳 国内 IP
+  - GEOIP,cn,🇨🇳 国内 IP
   - GEOIP,lanip,🏠 私有网络
   - GEOIP,telegramip,✈️ Telegram IP
 ```
 2. 每天早上 3 点（北京时间）自动构建
-3. `geoip:cnip` 源采用 [blackmatrix7/ios_rule_script/ChinaMax](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)（ChinaMax_IP.txt）、[17mon/china_ip_list](https://github.com/17mon/china_ip_list) 和 [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) 组合
+3. `geoip:cn` 源采用 [blackmatrix7/ios_rule_script/ChinaMax](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)（ChinaMax_IP.txt）、[17mon/china_ip_list](https://github.com/17mon/china_ip_list) 和 [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) 组合
 4. `geoip:lanip` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)（IP 部分）
 5. `geoip:telegramip` 源采用 [Telegram IP](https://core.telegram.org/resources/cidr.txt)
 # 二、 下载
