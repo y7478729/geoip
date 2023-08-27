@@ -44,14 +44,16 @@
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
-        "outputName": "geoip.dat"
+        "outputName": "geoip.dat",
+        "wantedList": ["cnip", "lanip", "telegramip"]
       }
     },
     {
       "type": "maxmindMMDB",
       "action": "output",
       "args": {
-        "outputName": "Country.mmdb"
+        "outputName": "Country.mmdb",
+        "wantedList": ["cnip", "lanip", "telegramip"]
       }
     },
     {
