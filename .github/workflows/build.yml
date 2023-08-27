@@ -73,7 +73,7 @@ jobs:
         run: |
           mkdir -p publish/text
           mv ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
-          cp -f ./output/text/cnip.txt ./publish/text
+          cp -f ./output/text/cn.txt ./publish/text
           cp -f ./output/text/lanip.txt ./publish/text
           cp -f ./output/text/telegramip.txt ./publish/text
 
