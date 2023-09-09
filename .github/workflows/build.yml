@@ -50,7 +50,7 @@ jobs:
         env:
           SED: grep -v '#' | sed '/^\s*$/d'
         run: |
-          mkdir -p ./tmp
+          mkdir -p ./tmp ./publish/text
           curl -sSL https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt > ./tmp/temp-cn.txt
           curl -sSL https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china.txt >> ./tmp/temp-cn.txt
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.txt | grep -v '^::' | ${{ env.SED }} >> ./tmp/temp-cn.txt
@@ -73,8 +73,7 @@ jobs:
 
       - name: Move files to publish directory
         run: |
-          mkdir -p publish/text
-          mv ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
+          mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
           cp -f ./output/text/cn.txt ./publish/text
           cp -f ./output/text/lanip.txt ./publish/text
           cp -f ./output/text/telegramip.txt ./publish/text
@@ -93,19 +92,19 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          cd publish || exit 1
+          cd ./publish || exit 1
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b release
-          git add -A
+          git add .
           git commit -m "${{ env.RELEASE_NAME }}"
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u geoip release
 
       - name: Purge jsDelivr CDN
         run: |
-          cd publish || exit 1
+          cd ./publish || exit 1
           for file in $(ls); do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
