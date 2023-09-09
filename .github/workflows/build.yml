@@ -78,17 +78,14 @@ jobs:
           cp -f ./output/text/lanip.txt ./publish/text
           cp -f ./output/text/telegramip.txt ./publish/text
 
-      - name: Upload files to GitHub release
-        uses: softprops/action-gh-release@v1
+      - name: Release and upload assets
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: latest
-          tag_name: latest
-          draft: false
-          prerelease: false
-          files: |
-            ./publish/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: latest
+          tag: latest
+          file_glob: true
+          file: ./publish/*
 
       - name: Git push assets to "release" branch
         run: |
