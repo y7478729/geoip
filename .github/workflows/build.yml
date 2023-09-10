@@ -72,14 +72,9 @@ jobs:
           curl -sSL ${cn4} >> ./tmp/temp-cn.txt
           sort --ignore-case -u ./tmp/temp-cn.txt > data/cn
 
-      - name: Build geoip-all.dat
+      - name: Build geoip files
         run: |
-          go run ./ --outputname geoip-all.dat
-
-      - name: Build geoip.dat
-        run: |
-          rm -f data/netflixip
-          go run ./ --outputname geoip.dat
+          go run ./
 
       - name: Verify mmdb files
         run: |
