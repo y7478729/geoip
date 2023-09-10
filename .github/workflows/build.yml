@@ -86,7 +86,7 @@ jobs:
 
       - name: Move files to publish directory
         run: |
-          mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
+          mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish/
           cp -f ./output/text/netflixip.txt ./publish/netflixip
           cp -f ./output/text/telegramip.txt ./publish/text
           cp -f ./output/text/lanip.txt ./publish/text
