@@ -88,7 +88,7 @@ jobs:
       - name: Move files to publish directory
         run: |
           mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
-          cp -rf ./output/text ./publish
+          cp -f ./output/text/netflixip* ./output/text/telegramip* ./output/text/lanip* ./output/text/cn* ./publish
 
       - name: Git push assets to "release" branch
         run: |
