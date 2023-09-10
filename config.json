@@ -17,24 +17,8 @@
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
-        "outputName": "geoip-all.dat",
-        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
-      }
-    },
-    {
-      "type": "maxmindMMDB",
-      "action": "output",
-      "args": {
-        "outputName": "Country-all.mmdb",
-        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
-      }
-    },
-    {
-      "type": "v2rayGeoIPDat",
-      "action": "output",
-      "args": {
         "outputName": "geoip.dat",
-        "wantedList": ["telegramip", "lanip", "cn"]
+        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
       }
     },
     {
@@ -42,6 +26,22 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
+        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
+      }
+    },
+    {
+      "type": "v2rayGeoIPDat",
+      "action": "output",
+      "args": {
+        "outputName": "geoip-lite.dat",
+        "wantedList": ["telegramip", "lanip", "cn"]
+      }
+    },
+    {
+      "type": "maxmindMMDB",
+      "action": "output",
+      "args": {
+        "outputName": "Country-lite.mmdb",
         "wantedList": ["telegramip", "lanip", "cn"]
       }
     },
