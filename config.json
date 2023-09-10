@@ -17,6 +17,22 @@
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
+        "outputName": "geoip-all.dat",
+        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
+      }
+    },
+    {
+      "type": "maxmindMMDB",
+      "action": "output",
+      "args": {
+        "outputName": "Country-all.mmdb",
+        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
+      }
+    },
+    {
+      "type": "v2rayGeoIPDat",
+      "action": "output",
+      "args": {
         "outputName": "geoip.dat",
         "wantedList": ["cn", "lanip", "telegramip"]
       }
