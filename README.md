@@ -2,7 +2,7 @@
 ## 1. geoip.dat 和 Country.mmdb
 ① 根据 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip) 进行深度定制，**有且仅有如下分类**：
 ```
-  - GEOIP,netflixip,🎥 Netflixip IP
+  - GEOIP,netflixip,🎥 Netflix IP
   - GEOIP,telegramip,✈️ Telegram IP
   - GEOIP,lanip,🏠 私有网络
   - GEOIP,cn,🇨🇳 国内 IP
