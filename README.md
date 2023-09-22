@@ -1,3 +1,4 @@
+# 特别说明：“🏠 私有网络”和“✈️ Telegram”名称已改！
 # 一、 说明
 ## 1. geoip.dat 和 Country.mmdb
 ① 根据 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip) 进行深度定制，**有且仅有如下分类**：
