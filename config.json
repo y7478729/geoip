@@ -18,7 +18,7 @@
       "action": "output",
       "args": {
         "outputName": "geoip.dat",
-        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
+        "wantedList": ["netflix", "telegram", "private", "cn"]
       }
     },
     {
@@ -26,7 +26,7 @@
       "action": "output",
       "args": {
         "outputName": "Country.mmdb",
-        "wantedList": ["netflixip", "telegramip", "lanip", "cn"]
+        "wantedList": ["netflix", "telegram", "private", "cn"]
       }
     },
     {
@@ -34,7 +34,7 @@
       "action": "output",
       "args": {
         "outputName": "geoip-lite.dat",
-        "wantedList": ["telegramip", "lanip", "cn"]
+        "wantedList": ["telegram", "private", "cn"]
       }
     },
     {
@@ -42,7 +42,7 @@
       "action": "output",
       "args": {
         "outputName": "Country-lite.mmdb",
-        "wantedList": ["telegramip", "lanip", "cn"]
+        "wantedList": ["telegram", "private", "cn"]
       }
     },
     {
