@@ -5,21 +5,18 @@
 ```
   - GEOIP,netflix,🎥 Netflix
   - GEOIP,telegram,✈️ Telegram
-  - GEOIP,download,📥 下载软件
   - GEOIP,private,🏠 私有网络
   - GEOIP,cn,🇨🇳 国内 IP
 ```
 ② 每天早上 3 点（北京时间）自动构建   
 ③ `geoip:netflix` 源采用 [blackmatrix7/ios_rule_script/Netflix/Netflix_IP.txt](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Netflix)  
-④ `geoip:telegram` 源采用 [Telegram IP](https://core.telegram.org/resources/cidr.txt)  
-⑤ `geoip:download` 源采用 [blackmatrix7/ios_rule_script/PrivateTracker](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/PrivateTracker)（IP 部分）  
-⑥ `geoip:private` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)（IP 部分）  
-⑦ `geoip:cn` 源采用 [blackmatrix7/ios_rule_script/ChinaMax/ChinaMax_IP.txt](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)、[17mon/china_ip_list](https://github.com/17mon/china_ip_list) 和 [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) 组合
+④ `geoip:telegram` 源采用 [Telegram IP](https://core.telegram.org/resources/cidr.txt)   
+⑤ `geoip:private` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)（IP 部分）  
+⑥ `geoip:cn` 源采用 [blackmatrix7/ios_rule_script/ChinaMax/ChinaMax_IP.txt](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)、[17mon/china_ip_list](https://github.com/17mon/china_ip_list) 和 [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) 组合
 ## 2. geoip-lite.dat 和 Country-lite.mmdb
 分别在 geoip.dat 和 Country.mmdb 的基础上去除了流媒体，**有且仅有如下分类**：
 ```
   - GEOIP,telegram,✈️ Telegram
-  - GEOIP,download,📥 下载软件
   - GEOIP,private,🏠 私有网络
   - GEOIP,cn,🇨🇳 国内 IP
 ```
