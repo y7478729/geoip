@@ -5,7 +5,7 @@
       "action": "add",
       "args": {
         "name": "telegram",
-        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/telegram.txt"
+        "uri": "https://core.telegram.org/resources/cidr.txt"
       }
     },
     {
