@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-input="./asn.csv"
 mkdir -p ./tmp ./data
 
 while IFS= read -r line; do
