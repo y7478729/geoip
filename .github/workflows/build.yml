@@ -49,11 +49,6 @@ jobs:
           echo "cn4=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt" >> $GITHUB_ENV
         shell: bash
 
-      - name: Fetch lists from ripe.net
-        run: |
-          chmod +x asn.sh
-          ./asn.sh
-
       - name: Generate netflix
         run: |
           mkdir -p ./tmp ./IPs ./publish
