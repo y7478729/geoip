@@ -52,15 +52,15 @@ jobs:
       - name: Generate netflix
         run: |
           mkdir -p ./publish/text
-          curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > data/netflix
+          curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' >> data/netflix
 
       - name: Generate private
         run: |
-          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' | sed '/^\s*$/d' > data/private
+          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' | sed '/^\s*$/d' >> data/private
 
       - name: Generate cn
         run: |
-          curl -sSL ${cn} | grep -v '#' | sed '/^\s*$/d' > data/cn
+          curl -sSL ${cn} | grep -v '#' | sed '/^\s*$/d' >> data/cn
 
       - name: Build geoip files
         run: |
