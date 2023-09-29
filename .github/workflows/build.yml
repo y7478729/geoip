@@ -37,13 +37,11 @@ jobs:
           go-version-file: ./go.mod
 
       - name: Set variables
-        run: |
-          echo "update_version=$(date +%Y-%m-%d)" >> ${GITHUB_ENV}
+        run: 
           echo "RELEASE_NAME=latest" >> $GITHUB_ENV
           echo "netflix=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_IP.txt" >> $GITHUB_ENV
-          echo "telegram=https://core.telegram.org/resources/cidr.txt" >> $GITHUB_ENV
           echo "private=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list" >> $GITHUB_ENV
-          echo "cn=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt" >> $GITHUB_ENV
+          echo "cn=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.txt" >> $GITHUB_ENV
         shell: bash
 
       - name: Fetch lists from ripe.net
@@ -53,30 +51,16 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./IPs ./publish
-          rm -f ./IPs/*
-          curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > ./IPs/netflix.txt
-
-      - name: Generate telegram
-        run: |
-          curl -sSL ${telegram} | sed '/^\s*$/d' > ./IPs/telegram.txt
+          mkdir -p ./publish
+          curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > data/netflix
 
       - name: Generate private
         run: |
-          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' | sed '/^\s*$/d' > ./IPs/private.txt
+          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' | sed '/^\s*$/d' > data/private
 
       - name: Generate cn
         run: |
-          curl -sSL ${cn} | grep -Ev '#|::' | sed '/^\s*$/d' > ./IPs/cn-ipv4.txt
-          curl -sSL ${cn} | grep -v '#' | grep '::' | sed '/^\s*$/d' > ./IPs/cn-ipv6.txt
-          cat ./IPs/cn-ipv4.txt ./IPs/cn-ipv6.txt > ./IPs/cn.txt
-
-      - name: Commit and push
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add . && git commit -m "更新于 ${update_version}" || exit 0
-          git push -f
+          curl -sSL ${cn} | grep -v '#' | sed '/^\s*$/d' > data/cn
 
       - name: Build geoip files
         run: |
@@ -93,6 +77,7 @@ jobs:
       - name: Move files to publish directory
         run: |
           mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
+          cp -f ./output/text/netflix* ./output/text/telegram* ./output/text/private* ./output/text/cn* ./publish
 
       - name: Git push assets to "release" branch
         run: |
@@ -106,19 +91,15 @@ jobs:
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u geoip release
 
-      - name: Purge jsDelivr CDN IPs
-        run: |
-          cd ./IPs || exit 1
-          for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/master/IPs/${file}"
-          done
-
-      - name: Purge jsDelivr CDN release
+      - name: Purge jsDelivr CDN
         run: |
           cd ./publish || exit 1
           for file in $(ls); do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
+
+      - name: Remove some files to avoid publishing to GitHub release
+        run: rm -rf ./publish/text
 
       - name: Release and upload assets
         uses: svenstaro/upload-release-action@v2
