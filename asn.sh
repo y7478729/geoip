@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-input="./asn.csv"
 mkdir -p ./tmp ./data
 
 while IFS= read -r line; do
@@ -20,4 +19,3 @@ while IFS= read -r line; do
     jq --raw-output '.data.prefixes.v4.originating[]' ./tmp/${filename}-${asn}.txt | sort -u >>${file}
     jq --raw-output '.data.prefixes.v6.originating[]' ./tmp/${filename}-${asn}.txt | sort -u >>${file}
   done
-done <${input}
