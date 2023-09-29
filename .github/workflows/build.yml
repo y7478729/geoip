@@ -70,7 +70,7 @@ jobs:
           sort --ignore-case -u ./tmp/temp-cn-ipv4.txt > ./tmp/cn-ipv4.txt
           awk -F'/' '!seen[$1]++' ./tmp/cn-ipv4.txt > ./IPs/cn-ipv4.txt
           curl -sSL ${cn3} | sed '/^\s*$/d' > ./tmp/temp-cn-ipv6.txt
-          curl -sSL ${cn4} | grep -v '#|^::' | grep '::' | sed '/^\s*$/d' >> ./tmp/temp-cn-ipv6.txt
+          curl -sSL ${cn4} | grep -Ev '#|^::' | grep '::' | sed '/^\s*$/d' >> ./tmp/temp-cn-ipv6.txt
           sort --ignore-case -u ./tmp/temp-cn-ipv6.txt > ./tmp/cn-ipv6.txt
           awk -F'/' '!seen[$1]++' ./tmp/cn-ipv6.txt > ./IPs/cn-ipv6.txt
           cat ./IPs/cn-ipv4.txt ./IPs/cn-ipv6.txt > ./IPs/cn.txt
