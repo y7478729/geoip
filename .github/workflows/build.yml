@@ -52,6 +52,7 @@ jobs:
       - name: Generate netflix
         run: |
           mkdir -p ./tmp ./IPs ./publish
+          rm -f ./IPs/*
           curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > ./IPs/netflix.txt
 
       - name: Generate telegram
