@@ -53,13 +53,12 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./IPs
+          mkdir -p ./IPs ./publish
           rm -f ./IPs/*
           curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > ./IPs/netflix.txt
 
       - name: Generate telegram
         run: |
-          mkdir -p ./IPs
           curl -sSL ${telegram} | sed '/^\s*$/d' > ./IPs/telegram.txt
 
       - name: Generate private
