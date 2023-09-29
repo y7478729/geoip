@@ -41,7 +41,6 @@ jobs:
           echo "RELEASE_NAME=latest" >> $GITHUB_ENV
           echo "netflix=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_IP.txt" >> $GITHUB_ENV
           echo "private=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list" >> $GITHUB_ENV
-          echo "cn=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt" >> $GITHUB_ENV
         shell: bash
 
       - name: Fetch lists from ripe.net
@@ -57,10 +56,6 @@ jobs:
       - name: Generate private
         run: |
           curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' | sed '/^\s*$/d' > data/private
-
-      - name: Generate cn
-        run: |
-          curl -sSL ${cn} | grep -v '#' | sed '/^\s*$/d' > data/cn
 
       - name: Build geoip files
         run: |
