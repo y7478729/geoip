@@ -60,7 +60,7 @@ jobs:
 
       - name: Generate cn
         run: |
-          curl -sSL ${cn} | grep -v '#' | sed '/^\s*$/d' > data/cn
+          curl -sSL ${cn} | grep -Ev '#|^::' | sed '/^\s*$/d' > data/cn
 
       - name: Build geoip files
         run: |
