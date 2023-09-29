@@ -71,7 +71,7 @@ jobs:
           curl -sSL ${cn3} | sed '/^\s*$/d' > ./tmp/temp-cn-ipv6.txt
           curl -sSL ${cn4} | grep -v '#' | grep '::' | sed '/^\s*$/d' >> ./tmp/temp-cn-ipv6.txt
           sort --ignore-case -u ./tmp/temp-cn-ipv6.txt > ./tmp/cn-ipv6.txt
-          awk -F'/' '!seen[$1]++' ./tmp/cn-ipv6.txt > data/cn
+          awk -F'/' '!seen[$1]++' ./tmp/cn-ipv6.txt >> data/cn
           rm -rf ./tmp
 
       - name: Build geoip files
