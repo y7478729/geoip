@@ -70,7 +70,7 @@ jobs:
         run: |
           curl -sSL ${cn} | grep -v '#|::' | sed '/^\s*$/d' > ./IPs/cn-ipv4.txt
           curl -sSL ${cn} | grep -v '#' | grep '::' | sed '/^\s*$/d' > ./IPs/cn-ipv6.txt
-          cat ./IPs/cn-ipv4.txt ./IPs/cn-ipv6.txt > /IPs/cn.txt
+          cat ./IPs/cn-ipv4.txt ./IPs/cn-ipv6.txt > ./IPs/cn.txt
 
       - name: Commit and push
         run: |
