@@ -103,6 +103,7 @@ jobs:
       - name: Move files to publish directory
         run: |
           mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
+          cp -rf ./output/text ./publish
 
       - name: Git push assets to "release" branch
         run: |
