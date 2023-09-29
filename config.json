@@ -55,10 +55,6 @@
       "args": {
         "inputDir": "./data"
       }
-    },
-    {
-      "type": "private",
-      "action": "add"
     }
   ],
   "output": [
