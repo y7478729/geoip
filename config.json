@@ -1,7 +1,7 @@
 {
   "input": [
         {
-      "type": "cutter",
+      "type": "text",
       "action": "remove",
       "args": {
         "wantedList": ["netflix", "telegram", "private", "cn"]
