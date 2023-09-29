@@ -4,8 +4,24 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "netflix",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/netflix.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "telegram",
-        "uri": "https://core.telegram.org/resources/cidr.txt"
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/telegram.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "private",
+        "uri": "https://raw.githubusercontent.com/DustinWin/clash-geoip/master/IPs/private.txt"
       }
     },
     {
