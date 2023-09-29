@@ -42,6 +42,10 @@ jobs:
           echo "netflix=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_IP.txt" >> $GITHUB_ENV
           echo "telegram=https://core.telegram.org/resources/cidr.txt" >> $GITHUB_ENV
           echo "private=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list" >> $GITHUB_ENV
+          echo "cn1=https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt" >> $GITHUB_ENV
+          echo "cn2=https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china.txt" >> $GITHUB_ENV
+          echo "cn3=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt" >> $GITHUB_ENV
+          echo "cn4=https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt" >> $GITHUB_ENV
         shell: bash
 
       - name: Fetch lists from ripe.net
@@ -51,7 +55,7 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./tmp ./geolite2 ./publish/text
+          mkdir -p ./tmp ./publish/text
           curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > data/netflix
 
       - name: Generate telegram
@@ -62,15 +66,13 @@ jobs:
         run: |
           curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' | sed '/^\s*$/d' > data/private
 
-      - name: Get GeoLite2
-        env:
-          LICENSE_KEY: ${{ secrets.MAXMIND_GEOLITE2_LICENSE }}
+      - name: Generate cn
         run: |
-          curl -o GeoLite2-Country-CSV.zip -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip"
-          unzip GeoLite2-Country-CSV.zip -d ./tmp
-          rm -f GeoLite2-Country-CSV.zip
-          mv -f ./tmp/GeoLite2* ./tmp/geolite2
-          cp -f ./tmp/geolite2/*zh-CN* ./tmp/geolite2/*IPv* ./geolite2
+          curl -sSL ${cn1} > ./tmp/temp-cn.txt
+          curl -sSL ${cn2} >> ./tmp/temp-cn.txt
+          curl -sSL ${cn3} | grep -v '#' | sed '/^\s*$/d' >> ./tmp/temp-cn.txt
+          curl -sSL ${cn4} >> ./tmp/temp-cn.txt
+          sort --ignore-case -u ./tmp/temp-cn.txt > data/cn
           rm -rf ./tmp
 
       - name: Build geoip files
