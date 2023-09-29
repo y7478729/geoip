@@ -51,7 +51,7 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./tmp ./IPs ./data ./publish
+          mkdir -p ./tmp ./IPs ./publish
           curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > ./IPs/netflix.txt
 
       - name: Generate telegram
@@ -82,6 +82,11 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add . && git commit -m "更新于 ${update_version}" || exit 0
           git push -f
+
+      - name: Fetch lists from ripe.net
+        run: |
+          chmod +x asn.sh
+          ./asn.sh
 
       - name: Build geoip files
         run: |
