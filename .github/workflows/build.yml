@@ -55,7 +55,7 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./tmp ./publish
+          mkdir -p ./tmp ./publish ./ips
           curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' >> data/netflix
 
       - name: Generate telegram
@@ -90,7 +90,7 @@ jobs:
       - name: Move files to publish directory
         run: |
           mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./publish
-          cp -rf ./output/text ./publish
+          cp -rf ./output/text/* ./ips
 
       - name: Git push assets to "release" branch
         run: |
@@ -104,11 +104,27 @@ jobs:
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u geoip release
 
+      - name: Git push assets to "ips" branch
+        run: |
+          cd ./ips || exit 1
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b ips
+          git add .
+          git commit -m "${{ env.RELEASE_NAME }}"
+          git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u geoip ips
+
       - name: Purge jsDelivr CDN
         run: |
           cd ./publish || exit 1
           for file in $(ls); do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
+          done
+          cd ../ips || exit 1
+          for file in $(ls); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@ips/${file}"
           done
 
       - name: Release and upload assets
