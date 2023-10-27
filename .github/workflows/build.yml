@@ -71,10 +71,12 @@ jobs:
           curl -sSL ${cn1} | sed '/^\s*$/d' > ./tmp/temp-cn-ipv4.txt
           curl -sSL ${cn2} | sed '/^\s*$/d' >> ./tmp/temp-cn-ipv4.txt
           curl -sSL ${cn4} | awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}' >> ./tmp/temp-cn-ipv4.txt
-          sort --ignore-case -u ./tmp/temp-cn-ipv4.txt > data/cn
+          sort --ignore-case -u ./tmp/temp-cn-ipv4.txt > ./tmp/cn-ipv4.txt
+          awk -F'/' '!seen[$1]++' ./tmp/cn-ipv4.txt > data/cn
           curl -sSL ${cn3} | sed '/^\s*$/d' > ./tmp/temp-cn-ipv6.txt
           curl -sSL ${cn4} | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' >> ./tmp/temp-cn-ipv6.txt
-          sort --ignore-case -u ./tmp/temp-cn-ipv6.txt >> data/cn
+          sort --ignore-case -u ./tmp/temp-cn-ipv6.txt > ./tmp/cn-ipv6.txt
+          awk -F'/' '!seen[$1]++' ./tmp/cn-ipv6.txt >> data/cn
           rm -rf ./tmp
 
       - name: Build geoip files
