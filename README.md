@@ -19,6 +19,7 @@
   - GEOIP,private,🏠 私有网络
   - GEOIP,cn,🇨🇳 国内 IP
 ```
+- 注：[点此](https://github.com/DustinWin/clash-geoip/tree/ips)查看 IP 段列表
 # 二、 下载（以 geoip.dat 和 Country.mmdb 为例）
 ## 1. geoip.dat
 ① GitHub 源：https://github.com/DustinWin/clash-geoip/releases/download/latest/geoip.dat  
