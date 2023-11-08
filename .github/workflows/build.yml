@@ -73,7 +73,6 @@ jobs:
           curl -sSL ${cn3} | sed '/^\s*$/d' >> data/cn
           curl -sSL ${cn4} | awk -F '|' '/CN/&&/ipv4/ {print $4 "/" 32-log($5)/log(2)}' >> data/cn
           curl -sSL ${cn4} | awk -F '|' '/CN/&&/ipv6/ {print $4 "/" $5}' >> data/cn
-          rm -rf ./tmp
 
       - name: Build geoip files
         run: |
