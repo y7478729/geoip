@@ -64,7 +64,7 @@ jobs:
 
       - name: Generate private
         run: |
-          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' | sed '/^\s*$/d' > data/private
+          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed '/^\s*$/d' | sed 's/[^,]*,//' | sed 's/,.*//g' > data/private
 
       - name: Generate cn
         run: |
