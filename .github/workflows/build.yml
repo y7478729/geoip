@@ -45,10 +45,11 @@ jobs:
         env:
           LICENSE_KEY: ${{ secrets.MAXMIND_GEOLITE2_LICENSE }}
         run: |
-          curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip" -o GeoLite2-Country-CSV.zip
-          unzip GeoLite2-Country-CSV.zip
-          rm -f GeoLite2-Country-CSV.zip
-          mv GeoLite2* geolite2
+          curl -o GeoLite2-Country-CSV.zip -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip"
+          unzip GeoLite2-Country-CSV.zip && rm -f GeoLite2-Country-CSV.zip
+          mv -f GeoLite2* geolite2
+          grep -E 'country_iso_code|CN' ./geolite2/GeoLite2-Country-Locations-en.csv > ./geolite2/temp-GeoLite2-Country-Locations-en.csv
+          mv -f ./geolite2/temp-GeoLite2-Country-Locations-en.csv > ./geolite2/GeoLite2-Country-Locations-en.csv
 
       - name: Set variables
         run: |
