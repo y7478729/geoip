@@ -1,7 +1,18 @@
 # 一、 说明
 - 注：深度定制的规则集可[点此](https://github.com/DustinWin/clash-geoip/tree/ips)查看包含的 IP 段列表
 ## 1. geoip-all.dat、Country-all.mmdb、geoip-all.metadb 和 geoip-all.db
-① 源采用 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)（可[点此](https://github.com/Loyalsoldier/geoip/tree/release/text)查看包含的规则集）  
+① 源采用 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)，包含如下分类（可[点此](https://github.com/Loyalsoldier/geoip/tree/release/text)查看其它国家或地区 IP 规则集）：
+```
+  - GEOIP,cloudflare,☁️ Cloudflare
+  - GEOIP,cloudfront,🌐 CloudFront
+  - GEOIP,facebook,👓 Facebook
+  - GEOIP,fastly,🌎 Fastly
+  - GEOIP,google,🗽 Google
+  - GEOIP,netflix,🎥 Netflix
+  - GEOIP,telegram,✈️ Telegram
+  - GEOIP,twitter,💬 Twitter
+  - GEOIP,cn,🇨🇳 国内 IP
+```
 ② .metadb 规则集文件适用于使用了 [Clash.Meta 内核](https://github.com/MetaCubeX/Clash.Meta)的客户端（下同）  
 ③ .db 规则集文件适用于使用了 [sing-box 平台](https://github.com/SagerNet/sing-box)的客户端（下同）
 ## 2. geoip.dat、Country.mmdb、geoip.metadb 和 geoip.db
