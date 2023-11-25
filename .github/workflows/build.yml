@@ -106,17 +106,15 @@ jobs:
           NO_SKIP: true
         run: |
           go install -trimpath -ldflags="-s -w -buildid=" github.com/metacubex/geo/cmd/geo@master
-          geo convert ip -i v2ray -o meta -f ./output/dat/geoip-all.metadb ./output/dat/geoip-all.dat
-          geo convert ip -i v2ray -o meta -f ./output/dat/geoip.metadb ./output/dat/geoip.dat
-          geo convert ip -i v2ray -o meta -f ./output/dat/geoip-lite.metadb ./output/dat/geoip-lite.dat
-          geo convert ip -i v2ray -o sing -f ./output/dat/geoip-all.db ./output/dat/geoip-all.dat
-          geo convert ip -i v2ray -o sing -f ./output/dat/geoip.db ./output/dat/geoip.dat
-          geo convert ip -i v2ray -o sing -f ./output/dat/geoip-lite.db ./output/dat/geoip-lite.dat
-          
+          cd ./output/dat || exit 1
+          for file in $(ls *.dat | sed 's/\..*//g'); do
+            geo convert ip -i v2ray -o meta -f "./${file}.metadb" "./${file}.dat"
+            geo convert ip -i v2ray -o sing -f "./${file}.db" "./${file}.dat"
+          done        
 
       - name: Move files to publish directory
         run: |
-          mv -f ./output/dat/*.dat ./output/maxmind/*.mmdb ./output/dat/*.metadb ./output/dat/*.db ./publish
+          mv -f ./output/maxmind/*.mmdb ./output/dat/*.dat ./output/dat/*.metadb ./output/dat/*.db ./publish
           cp -rf ./output/text/* ./ips
 
       - name: Git push assets to "release" branch
