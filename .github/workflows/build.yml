@@ -117,6 +117,15 @@ jobs:
           mv -f ./output/maxmind/*.mmdb ./output/dat/*.dat ./output/dat/*.metadb ./output/dat/*.db ./publish
           cp -rf ./output/text/* ./ips
 
+      - name: Release and upload assets
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: latest
+          tag: latest
+          file_glob: true
+          file: ./publish/*
+
       - name: Git push assets to "release" branch
         run: |
           cd ./publish || exit 1
@@ -151,12 +160,3 @@ jobs:
           for file in $(ls); do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@ips/${file}"
           done
-
-      - name: Release and upload assets
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: latest
-          tag: latest
-          file_glob: true
-          file: ./publish/*
