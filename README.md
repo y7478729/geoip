@@ -7,10 +7,10 @@
   - GEOIP,cloudfront,🌐 CloudFront
   - GEOIP,facebook,👓 Facebook
   - GEOIP,fastly,🌎 Fastly
-  - GEOIP,google,🗽 Google
-  - GEOIP,netflix,🎥 Netflix
-  - GEOIP,telegram,✈️ Telegram
-  - GEOIP,twitter,💬 Twitter
+  - GEOIP,google,📢 谷歌
+  - GEOIP,netflix,🎥 奈飞视频
+  - GEOIP,telegram,📲 电报消息
+  - GEOIP,twitter,✖️ Twitter
   - GEOIP,cn,🇨🇳 国内 IP
 ```
 ② .metadb 规则集文件适用于使用了 [Clash.Meta 内核](https://github.com/MetaCubeX/Clash.Meta)的客户端（下同）  
@@ -18,9 +18,9 @@
 ## 2. geoip.dat、Country.mmdb、geoip.metadb 和 geoip.db
 ① 根据 Loyalsoldier/geoip 进行深度定制，**有且仅有如下分类**：
 ```
-  - GEOIP,netflix,🎥 Netflix
-  - GEOIP,telegram,✈️ Telegram
-  - GEOIP,private,🏠 私有网络
+  - GEOIP,netflix,🎥 奈飞视频
+  - GEOIP,telegram,📲 电报消息
+  - GEOIP,private,🔒 私有网络
   - GEOIP,cn,🇨🇳 国内 IP
 ```
 ② 每天早上 3 点（北京时间）自动构建   
@@ -31,8 +31,8 @@
 ## 3. geoip-lite.dat、Country-lite.mmdb、geoip-lite.metadb 和 geoip-lite.db
 分别在 geoip.dat、Country.mmdb、geoip.metadb 和 geoip.db 的基础上去除了流媒体，**有且仅有如下分类**：
 ```
-  - GEOIP,telegram,✈️ Telegram
-  - GEOIP,private,🏠 私有网络
+  - GEOIP,telegram,📲 电报消息
+  - GEOIP,private,🔒 私有网络
   - GEOIP,cn,🇨🇳 国内 IP
 ```
 # 二、 下载（以 geoip.dat、Country.mmdb、geoip.metadb 和 geoip.db 为例）
