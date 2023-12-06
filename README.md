@@ -38,16 +38,20 @@
 # 二、 下载（以 geoip.dat、Country.mmdb、geoip.metadb 和 geoip.db 为例）
 ## 1. geoip.dat
 ① GitHub 源：https://github.com/DustinWin/clash-geoip/releases/download/latest/geoip.dat  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.dat
+② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.dat  
+③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/clash-geosite/release/geoip.dat
 ## 2. Country.mmdb
 ① GitHub 源：https://github.com/DustinWin/clash-geoip/releases/download/latest/Country.mmdb  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/Country.mmdb
+② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/Country.mmdb  
+③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/clash-geosite/release/Country.mmdb
 ## 3. geoip.metadb
 ① GitHub 源：https://github.com/DustinWin/clash-geoip/releases/download/latest/geoip.metadb  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.metadb
+② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.metadb  
+③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/clash-geosite/release/geoip.metadb
 ## 4. geoip.db
 ① GitHub 源：https://github.com/DustinWin/clash-geoip/releases/download/latest/geoip.db  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.db
+② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.db  
+③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/clash-geosite/release/geoip.db
 # 三、 导入（以 [ShellClash](https://github.com/juewuy/ShellClash) 导入 geoip.dat 和 Country.mmdb 为例）
 连接 SSH 后执行如下命令：
 ```
