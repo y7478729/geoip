@@ -66,23 +66,23 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./publish ./ips
-          curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > data/netflix
+          mkdir -p ./publish/ ./ips/
+          curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > ./data/netflix
 
       - name: Generate telegram
         run: |
-          curl -sSL ${telegram} > data/telegram
+          curl -sSL ${telegram} > ./data/telegram
 
       - name: Generate private
         run: |
-          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' > data/private
+          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' > ./data/private
 
       - name: Generate cn
         run: |
-          curl -sSL ${cn1} | sed '/^\s*$/d' >> data/cn
-          curl -sSL ${cn2} | sed '/^\s*$/d' >> data/cn
-          curl -sSL ${cn3} | sed '/^\s*$/d' >> data/cn
-          curl -sSL ${cn4} | grep -v '#' | sed '/^\s*$/d' >> data/cn
+          curl -sSL ${cn1} | sed '/^\s*$/d' >> ./data/cn
+          curl -sSL ${cn2} | sed '/^\s*$/d' >> ./data/cn
+          curl -sSL ${cn3} | sed '/^\s*$/d' >> ./data/cn
+          curl -sSL ${cn4} | grep -v '#' | sed '/^\s*$/d' >> ./data/cn
 
       - name: Build geoip files
         run: |
@@ -90,7 +90,7 @@ jobs:
 
       - name: Verify mmdb files
         run: |
-          cd ./output/maxmind || exit 1
+          cd ./output/maxmind/ || exit 1
           go install -v github.com/maxmind/mmdbverify@latest
           for name in $(ls *.mmdb); do
             $(go env GOPATH)/bin/mmdbverify -file ${name}
@@ -106,7 +106,7 @@ jobs:
           NO_SKIP: true
         run: |
           go install -trimpath -ldflags="-s -w -buildid=" github.com/metacubex/geo/cmd/geo@master
-          cd ./output/dat || exit 1
+          cd ./output/dat/ || exit 1
           for file in $(ls *.dat | sed 's/\..*//g'); do
             geo convert ip -i v2ray -o meta -f "./${file}.metadb" "./${file}.dat"
             geo convert ip -i v2ray -o sing -f "./${file}.db" "./${file}.dat"
@@ -114,8 +114,8 @@ jobs:
 
       - name: Move files to publish directory
         run: |
-          mv -f ./output/maxmind/*.mmdb ./output/dat/*.dat ./output/dat/*.metadb ./output/dat/*.db ./publish
-          cp -rf ./output/text/* ./ips
+          mv -f ./output/maxmind/*.mmdb ./output/dat/*.dat ./output/dat/*.metadb ./output/dat/*.db ./publish/
+          cp -rf ./output/text/* ./ips/
 
       - name: Release and upload assets
         uses: svenstaro/upload-release-action@v2
@@ -128,7 +128,7 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          cd ./publish || exit 1
+          cd ./publish/ || exit 1
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -140,7 +140,7 @@ jobs:
 
       - name: Git push assets to "ips" branch
         run: |
-          cd ./ips || exit 1
+          cd ./ips/ || exit 1
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -152,11 +152,11 @@ jobs:
 
       - name: Purge jsDelivr CDN
         run: |
-          cd ./publish || exit 1
+          cd ./publish/ || exit 1
           for file in $(ls); do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
-          cd ../ips || exit 1
+          cd ../ips/ || exit 1
           for file in $(ls); do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@ips/${file}"
           done
