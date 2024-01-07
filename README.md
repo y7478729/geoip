@@ -55,7 +55,7 @@
 # 三、 导入（以 [ShellClash](https://github.com/juewuy/ShellClash) 导入 geoip.dat 和 Country.mmdb 为例）
 连接 SSH 后执行如下命令：
 ```
-curl -o $clashdir/GeoIP.dat -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.dat
-curl -o $clashdir/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/Country.mmdb
-$clashdir/start.sh restart
+curl -o $CRASHDIR/GeoIP.dat -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/geoip.dat
+curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/clash-geoip@release/Country.mmdb
+$CRASHDIR/start.sh restart
 ```
