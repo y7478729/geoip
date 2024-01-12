@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout codebase
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -112,7 +114,7 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git add . && git commit -m "IP 段列表更新于 ${update_version}" || exit 0
+          git add ./IPs/ && git commit -m "IP 段列表更新于 ${update_version}" || exit 0
           git push -f
 
       - name: Git push assets to "clash" branch
