@@ -23,14 +23,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Delete current tag and release
-        uses: dev-drprasad/delete-tag-and-release@v1.0
-        with:
-          tag_name: latest
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          delete_release: true
-          repo: ${{ github.repository }}
-
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
@@ -54,7 +46,7 @@ jobs:
 
       - name: Set variables
         run: |
-          echo "RELEASE_NAME=Released on $(date -d '+8 hours' +'%Y-%m-%d %H:%M')" >> $GITHUB_ENV
+          echo "update_version=$(date -d '+8 hours' +%Y-%m-%d)" >> ${GITHUB_ENV}
           echo "netflix=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_IP.txt" >> $GITHUB_ENV
           echo "telegram=https://core.telegram.org/resources/cidr.txt" >> $GITHUB_ENV
           echo "private=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list" >> $GITHUB_ENV
@@ -66,7 +58,7 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./publish/ ./ips/
+          mkdir -p ./clash/ ./sing-box/ ./IPs
           curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > ./data/netflix
 
       - name: Generate telegram
@@ -112,51 +104,54 @@ jobs:
             geo convert ip -i v2ray -o sing -f "./${file}.db" "./${file}.dat"
           done        
 
-      - name: Move files to publish directory
+      - name: Move files to branchs
         run: |
-          mv -f ./output/maxmind/*.mmdb ./output/dat/*.dat ./output/dat/*.metadb ./output/dat/*.db ./publish/
-          cp -rf ./output/text/* ./ips/
+          mv -f ./output/maxmind/*.mmdb ./output/dat/*.dat ./output/dat/*.metadb ./clash/
+          mv -f ./output/dat/*.db ./sing-box/
+          cp -rf ./output/text/* ./IPs/
 
-      - name: Release and upload assets
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: latest
-          tag: latest
-          file_glob: true
-          file: ./publish/*
-
-      - name: Git push assets to "release" branch
+      - name: Commit and push `master` branch
         run: |
-          cd ./publish/ || exit 1
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add . && git commit -m "IP 段列表更新于 ${update_version}" || exit 0
+          git push -f
+
+      - name: Git push assets to "clash" branch
+        run: |
+          cd ./clash/ || exit 1
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b release
+          git checkout -b clash
           git add .
-          git commit -m "${{ env.RELEASE_NAME }}"
+          git commit -m "clash geoip 更新于 ${update_version}"
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f -u geoip release
+          git push -f -u geoip clash
 
-      - name: Git push assets to "ips" branch
+      - name: Git push assets to "sing-box" branch
         run: |
-          cd ./ips/ || exit 1
+          cd ./sing-box/ || exit 1
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b ips
+          git checkout -b sing-box
           git add .
-          git commit -m "${{ env.RELEASE_NAME }}"
+          git commit -m "sing-box geoip 更新于 ${update_version}"
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f -u geoip ips
+          git push -f -u geoip sing-box
 
       - name: Purge jsDelivr CDN
         run: |
-          cd ./publish/ || exit 1
+          cd ./IPs/ || exit 1
           for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@master/IPs/${file}"
           done
-          cd ../ips/ || exit 1
+          cd ../clash/ || exit 1
           for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@ips/${file}"
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@clash/${file}"
+          done
+          cd ../sing-box/ || exit 1
+          for file in $(ls); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing-box/${file}"
           done
