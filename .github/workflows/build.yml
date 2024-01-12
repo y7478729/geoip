@@ -102,12 +102,21 @@ jobs:
           for file in $(ls *.dat | sed 's/\..*//g'); do
             geo convert ip -i v2ray -o meta -f "./${file}.metadb" "./${file}.dat"
             geo convert ip -i v2ray -o sing -f "./${file}.db" "./${file}.dat"
-          done        
+          done
+
+      - name: Move files
+        run: |
+          cd ./output/dat/ || exit 1
+          for file in $(ls *.dat *.metadb); do
+            install -Dp "./${file}" ../../clash/
+          done
+          for file in $(ls *.db); do
+            install -Dp "./${file}" ../../sing-box/
+          done
 
       - name: Move files to branchs
         run: |
-          mv -f ./output/maxmind/*.mmdb ./output/dat/*.dat ./output/dat/*.metadb ./clash/
-          mv -f ./output/dat/*.db ./sing-box/
+          mv -f ./output/maxmind/*.mmdb ./clash/
           cp -rf ./output/text/* ./IPs/
 
       - name: Commit and push `master` branch
