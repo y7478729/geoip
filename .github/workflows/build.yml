@@ -2,7 +2,7 @@ name: Build geoip files
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 19 * * *"
+    - cron: "30 18 * * *"
   push:
     branches:
       - master
@@ -32,6 +32,22 @@ jobs:
         run: |
           chmod +x asn.sh
           ./asn.sh
+
+      - name: Delete `clash` tag and release
+        uses: dev-drprasad/delete-tag-and-release@v1.0
+        with:
+          tag_name: clash
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_release: true
+          repo: ${{ github.repository }}
+
+      - name: Delete `sing-box` tag and release
+        uses: dev-drprasad/delete-tag-and-release@v1.0
+        with:
+          tag_name: sing-box
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_release: true
+          repo: ${{ github.repository }}
 
       - name: Get GeoLite2
         env:
@@ -116,15 +132,24 @@ jobs:
 
       - name: Move files to branchs
         run: |
-          mv -f ./output/maxmind/*.mmdb ./clash/
+          cp -f ./output/maxmind/*.mmdb ./clash/
           cp -rf ./output/text/* ./IPs/
 
-      - name: Commit and push `master` branch
+      - name: Commit and push `IPs`
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add ./IPs/ && git commit -m "IP 段列表更新于 ${update_version}" || exit 0
           git push -f
+
+      - name: Release and upload `clash` assets
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: clash
+          tag: clash
+          file_glob: true
+          file: ./clash/*
 
       - name: Git push assets to "clash" branch
         run: |
@@ -137,6 +162,15 @@ jobs:
           git commit -m "clash geoip 更新于 ${update_version}"
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u geoip clash
+
+      - name: Release and upload `sing-box` assets
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: sing-box
+          tag: sing-box
+          file_glob: true
+          file: ./sing-box/*
 
       - name: Git push assets to "sing-box" branch
         run: |
