@@ -14,23 +14,49 @@
 |Country-all.mmdb、geoip-all.dat、geoip-all.metadb 和 geoip-all.db|来源于 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)，[点此查看](https://github.com/Loyalsoldier/geoip/tree/release/text)|
 |Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db|`netflix`、`telegram`、`private` 和 `cn`|
 |Country-lite.mmdb、geoip-lite.dat、geoip-lite.metadb 和 geoip-lite.db|~~`netflix`~~、`telegram`、`private` 和 `cn`|
-# 二、 文件下载（以 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）
-## 1. Country.mmdb
-① GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country.mmdb  
-③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb
-## 2. geoip.dat
-① GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.dat  
-③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat
-## 3. geoip.metadb
-① GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.metadb  
-③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb
-## 4. geoip.db
-① GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db  
-② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip.db  
-③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db
+# 二、 规则集文件下载（以 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）
+<table>
+  <tr>
+    <td rowspan="3">Country.mmdb</td>
+    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb</td>
+  </tr>
+  <tr>
+    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country.mmdb</td>
+  </tr>
+  <tr>
+    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb</td>
+  </tr>
+  <tr>
+    <td rowspan="3">geoip.dat</td>
+    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat</td>
+  </tr>
+  <tr>
+    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.dat</td>
+  </tr>
+  <tr>
+    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat</td>
+  </tr>
+  <tr>
+    <td rowspan="3">geoip.metadb</td>
+    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb</td>
+  </tr>
+  <tr>
+    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.metadb</td>
+  </tr>
+  <tr>
+    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb</td>
+  </tr>
+  <tr>
+    <td rowspan="3">geoip.db</td>
+    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db</td>
+  </tr>
+  <tr>
+    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip.db</td>
+  </tr>
+  <tr>
+    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db</td>
+  </tr>
+</table>
 # 三、 文件导入（以 [ShellClash](https://github.com/juewuy/ShellCrash) 导入 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）
 连接 SSH 后执行如下命令：
 ```
