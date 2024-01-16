@@ -13,7 +13,7 @@
 |-----|-----|
 |Country-all.mmdb、geoip-all.dat、geoip-all.metadb 和 geoip-all.db|来源于 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)，[点此查看](https://github.com/Loyalsoldier/geoip/tree/release/text)|
 |Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db|`netflix`、`telegram`、`private` 和 `cn`|
-|Country-lite.mmdb、geoip-lite.dat、geoip-lite.metadb 和 geoip-lite.db|`telegram`、`private` 和 `cn`|
+|Country-lite.mmdb、geoip-lite.dat、geoip-lite.metadb 和 geoip-lite.db|~~`netflix`~~、`telegram`、`private` 和 `cn`|
 # 二、 文件下载（以 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）
 ## 1. Country.mmdb
 ① GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb  
