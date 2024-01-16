@@ -18,7 +18,7 @@
 ① GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb  
 ② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country.mmdb  
 ③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb
-## 1. geoip.dat
+## 2. geoip.dat
 ① GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat  
 ② jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.dat  
 ③ GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat
