@@ -60,7 +60,7 @@
 </table>
 
 # 三、 文件导入
-① 导入 Linux 端（以 [ShellClash](https://github.com/juewuy/ShellCrash) 导入 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）  
+① 导入 Linux 端（以 [ShellCrash](https://github.com/juewuy/ShellCrash) 导入 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）  
 连接 SSH 后执行如下命令：
 ```
 # Clash 内核
