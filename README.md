@@ -58,12 +58,27 @@
   </tr>
 </table>
 
-# 三、 文件导入（以 [ShellClash](https://github.com/juewuy/ShellCrash) 导入 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）
+# 三、 文件导入
+① 导入到 Linux 端（以 [ShellClash](https://github.com/juewuy/ShellCrash) 导入 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）  
 连接 SSH 后执行如下命令：
 ```
+# Clash 内核
 curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country.mmdb
 curl -o $CRASHDIR/geoip.dat -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.dat
+# Clash.Meta 内核
 curl -o $CRASHDIR/geoip.metadb -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.metadb
+# sing-box 内核
 curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip.db
 $CRASHDIR/start.sh restart
+```
+② 导入到 Windows 端（以 [Clash Verge](https://github.com/MetaCubeX/clash-verge) 导入 geosite.dat、Country.mmdb、geoip.dat 和 geoip.metadb 为例）  
+以管理员身份运行 CMD，执行如下命令：
+```
+taskkill /f /t /im "Clash Verge*"
+taskkill /f /t /im Clash-Verge*
+taskkill /f /t /im clash-meta*
+curl -o %APPDATA%\io.github.clash-verge-rev.clash-verge-rev\Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country.mmdb
+curl -o %APPDATA%\io.github.clash-verge-rev.clash-verge-rev\geoip.dat -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.dat
+curl -o %APPDATA%\io.github.clash-verge-rev.clash-verge-rev\geoip.metadb -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.metadb
+pause
 ```
