@@ -160,8 +160,8 @@ jobs:
           git checkout -b clash
           git add .
           git commit -m "clash geoip 更新于 ${update_version}"
-          git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f -u geoip clash
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin clash
 
       - name: Release and upload `sing-box` assets
         uses: svenstaro/upload-release-action@v2
@@ -181,8 +181,8 @@ jobs:
           git checkout -b sing-box
           git add .
           git commit -m "sing-box geoip 更新于 ${update_version}"
-          git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f -u geoip sing-box
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin sing-box
 
       - name: Purge jsDelivr CDN
         run: |
