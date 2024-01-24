@@ -74,7 +74,7 @@ jobs:
 
       - name: Generate netflix
         run: |
-          mkdir -p ./clash/ ./sing-box/ ./IPs
+          mkdir -p ./clash/ ./sing-box/ ./ips
           curl -sSL ${netflix} | grep -v '#' | sed '/^\s*$/d' > ./data/netflix
 
       - name: Generate telegram
@@ -133,14 +133,18 @@ jobs:
       - name: Move files to branchs
         run: |
           cp -f ./output/maxmind/*.mmdb ./clash/
-          cp -rf ./output/text/* ./IPs/
+          cp -rf ./output/text/* ./ips/
 
-      - name: Commit and push `IPs`
+      - name: Commit and push `ips` branch
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add ./IPs/ && git commit -m "IP 段列表更新于 ${update_version}" || exit 0
-          git push -f
+          cd ./ips/ || exit 1
+          git init
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git checkout -b ips
+          git add . && git commit -m "IP 段列表更新于 ${update_version}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin ips
 
       - name: Release and upload `clash` assets
         uses: svenstaro/upload-release-action@v2
@@ -186,9 +190,9 @@ jobs:
 
       - name: Purge jsDelivr CDN
         run: |
-          cd ./IPs/ || exit 1
+          cd ./ips/ || exit 1
           for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@master/IPs/${file}"
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@ips/${file}"
           done
           cd ../clash/ || exit 1
           for file in $(ls); do
