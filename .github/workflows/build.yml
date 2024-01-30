@@ -133,7 +133,7 @@ jobs:
       - name: Move files to branchs
         run: |
           cp -f ./output/maxmind/*.mmdb ./clash/
-          grep -v '::' ./output/text/cn.txt > ./output/text/cn_ip.txt
+          grep -v '::' ./output/text/cn.txt > ./output/text/cn_ipv4.txt
           grep '::' ./output/text/cn.txt > ./output/text/cn_ipv6.txt
           cp -rf ./output/text/* ./ips/
           rm -rf ./output*
