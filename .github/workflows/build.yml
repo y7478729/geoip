@@ -34,13 +34,6 @@ jobs:
           chmod +x asn.sh
           ./asn.sh
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: '20'
-      - run: npm install
-      - run: npm test
-
       - name: Delete `clash` tag and release
         uses: dev-drprasad/delete-tag-and-release@v1.0
         with:
