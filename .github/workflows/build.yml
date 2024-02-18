@@ -13,6 +13,7 @@ on:
       - "README.md"
       - ".github/dependabot.yml"
       - ".github/workflows/delete-old-workflows.yml"
+
 jobs:
   build:
     name: Build
@@ -23,20 +24,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version-file: ./go.mod
-
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install Node.js
-        run: |
-          npm init
-          npm install
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: ./go.mod
 
       - name: Fetch lists from ripe.net
         run: |
