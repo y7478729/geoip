@@ -34,7 +34,7 @@ jobs:
           node-version: '20'
 
       - name: Install Node.js
-        run: npm ci
+        run: npm install
 
       - name: Fetch lists from ripe.net
         run: |
