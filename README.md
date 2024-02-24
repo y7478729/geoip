@@ -108,7 +108,7 @@ curl -o $CRASHDIR/geoip.metadb -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@cl
 curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip.db
 $CRASHDIR/start.sh restart
 ```
-② 导入 Windows 端（以 [Clash Verge](https://github.com/MetaCubeX/clash-verge) 导入 Country.mmdb、geoip.dat 和 geoip.metadb 为例）  
+② 导入 Windows 端（以 [Clash Verge](https://github.com/clash-verge-rev/clash-verge-rev) 导入 Country.mmdb、geoip.dat 和 geoip.metadb 为例）  
 以管理员身份运行 CMD，执行如下命令：
 ```
 taskkill /f /t /im "Clash Verge*"
