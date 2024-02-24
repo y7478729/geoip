@@ -8,54 +8,90 @@
 ③ `geoip,telegram,📲 电报消息` 源采用 [Telegram IP 段](https://core.telegram.org/resources/cidr.txt)  
 ④ `geoip,private,🔒 私有网络` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)  
 ⑤ `geoip,cn,🇨🇳 国内 IP` 源采用 [GeoLite2/cn.txt](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data)、[17mon/china_ip_list](https://github.com/17mon/china_ip_list)、[gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) 和 [blackmatrix7/ios_rule_script/ChinaIPs/ChinaIPs_IP.txt](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaIPs) 组合
-
-**规则集文件包含的规则对应关系如下表：**
-|规则集文件名称|包含规则|
-|-----|-----|
-|Country-all.mmdb、geoip-all.dat、geoip-all.metadb 和 geoip-all.db|来源于 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)，[点此查看](https://github.com/Loyalsoldier/geoip/tree/release/text)|
-|Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db|`netflix`、`telegram`、`private` 和 `cn`|
-|Country-lite.mmdb、geoip-lite.dat、geoip-lite.metadb 和 geoip-lite.db|~~`netflix`~~、`telegram`、`private` 和 `cn`|
-# 二、 文件下载（以 Country.mmdb、geoip.dat、geoip.metadb 和 geoip.db 为例）
+# 二、 文件下载
+**规则集文件包含的规则和下载地址对应关系如下表：**
 <table>
   <tr>
-    <td rowspan="3">Country.mmdb</td>
-    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb</td>
+    <td><b>规则集文件名称</b></td>
+    <td align="center"><b>包含规则</b></td>
+    <td><b>GitHub 源</b></td>
+    <td><b>jsDelivr 源</b></td>
+    <td><b>GitHub Proxy 源</b></td>
   </tr>
   <tr>
-    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country.mmdb</td>
+    <td>geoip-all.dat</td>
+    <td rowspan="4" align="center"><a href="https://github.com/Loyalsoldier/geoip/tree/release/text">点此查看</a></td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-all.dat">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip-all.dat">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-all.dat">点此下载</a></td>
   </tr>
   <tr>
-    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb</td>
+    <td>Country-all.mmdb</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/Country-all.mmdb">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country-all.mmdb">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/Country-all.mmdb">点此下载</a></td>
   </tr>
   <tr>
-    <td rowspan="3">geoip.dat</td>
-    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat</td>
+    <td>geoip-all.metadb</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-all.metadb">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip-all.metadb">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-all.metadb">点此下载</a></td>
   </tr>
   <tr>
-    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.dat</td>
+    <td>geoip-all.db</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip-all.db">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip-all.db">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip-all.db">点此下载</a></td>
   </tr>
   <tr>
-    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat</td>
+    <td>geoip.dat</td>
+    <td rowspan="4"><code>netflix</code>、<code>telegram</code>、<code>private</code> 和 <code>cn</code></td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.dat">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.dat">点此下载</a></td>
   </tr>
   <tr>
-    <td rowspan="3">geoip.metadb</td>
-    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb</td>
+    <td>Country.mmdb</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country.mmdb">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/Country.mmdb">点此下载</a></td>
   </tr>
   <tr>
-    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.metadb</td>
+    <td>geoip.metadb</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip.metadb">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb">点此下载</a></td>
   </tr>
   <tr>
-    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip.metadb</td>
+    <td>geoip.db</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip.db">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db">点此下载</a></td>
   </tr>
   <tr>
-    <td rowspan="3">geoip.db</td>
-    <td>GitHub 源：https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db</td>
+    <td>geoip-lite.dat</td>
+    <td rowspan="4"><del><code>netflix</code></del>、<code>telegram</code>、<code>private</code> 和 <code>cn</code></td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-lite.dat">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip-lite.dat">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-lite.dat">点此下载</a></td>
   </tr>
   <tr>
-    <td>jsDelivr 源：https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip.db</td>
+    <td>Country-lite.mmdb</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/Country-lite.mmdb">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/Country-lite.mmdb">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/Country-lite.mmdb">点此下载</a></td>
   </tr>
   <tr>
-    <td>GitHub Proxy 源：https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip.db</td>
+    <td>geoip-lite.metadb</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-lite.metadb">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@clash/geoip-lite.metadb">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/clash/geoip-lite.metadb">点此下载</a></td>
+  </tr>
+  <tr>
+    <td>geoip-lite.db</td>
+    <td><a href="https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip-lite.db">点此下载</a></td>
+    <td><a href="https://cdn.jsdelivr.net/gh/DustinWin/geoip@sing-box/geoip-lite.db">点此下载</a></td>
+    <td><a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/DustinWin/geoip/sing-box/geoip-lite.db">点此下载</a></td>
   </tr>
 </table>
 
