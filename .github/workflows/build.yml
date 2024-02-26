@@ -34,22 +34,6 @@ jobs:
           chmod +x asn.sh
           ./asn.sh
 
-      - name: Delete `clash` tag and release
-        uses: dev-drprasad/delete-tag-and-release@v1.0
-        with:
-          tag_name: clash
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          delete_release: true
-          repo: ${{ github.repository }}
-
-      - name: Delete `sing-box` tag and release
-        uses: dev-drprasad/delete-tag-and-release@v1.0
-        with:
-          tag_name: sing-box
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          delete_release: true
-          repo: ${{ github.repository }}
-
       - name: Get GeoLite2
         env:
           LICENSE_KEY: ${{ secrets.MAXMIND_GEOLITE2_LICENSE }}
@@ -156,6 +140,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           release_name: clash
           tag: clash
+          overwrite: true
           file_glob: true
           file: ./clash/*
 
@@ -177,6 +162,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           release_name: sing-box
           tag: sing-box
+          overwrite: true
           file_glob: true
           file: ./sing-box/*
 
