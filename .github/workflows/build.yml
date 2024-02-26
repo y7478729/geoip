@@ -141,8 +141,8 @@ jobs:
           release_name: clash
           tag: clash
           overwrite: true
-          file_glob: true
           body: "[Clash](https://github.com/Dreamacro/clash) geodata 规则集文件"
+          file_glob: true
           file: ./clash/*
 
       - name: Git push assets to "clash" branch
@@ -164,8 +164,8 @@ jobs:
           release_name: sing-box
           tag: sing-box
           overwrite: true
-          file_glob: true
           body: "[sing-box](https://github.com/SagerNet/sing-box) geodata 规则集文件"
+          file_glob: true
           file: ./sing-box/*
 
       - name: Git push assets to "sing-box" branch
