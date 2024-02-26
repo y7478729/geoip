@@ -141,7 +141,7 @@ jobs:
           release_name: clash
           tag: clash
           overwrite: true
-          body: "[Clash](https://github.com/Dreamacro/clash) geodata 规则集文件"
+          body: "[Clash](https://github.com/Dreamacro/clash) geoip 文件"
           file_glob: true
           file: ./clash/*
 
@@ -153,7 +153,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b clash
           git add .
-          git commit -m "clash geoip 更新于 ${update_version}"
+          git commit -m "Clash geoip 文件更新于 ${update_version}"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin clash
 
@@ -164,7 +164,7 @@ jobs:
           release_name: sing-box
           tag: sing-box
           overwrite: true
-          body: "[sing-box](https://github.com/SagerNet/sing-box) geodata 规则集文件"
+          body: "[sing-box](https://github.com/SagerNet/sing-box) geoip 文件"
           file_glob: true
           file: ./sing-box/*
 
@@ -176,7 +176,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b sing-box
           git add .
-          git commit -m "sing-box geoip 更新于 ${update_version}"
+          git commit -m "sing-box geoip 文件更新于 ${update_version}"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin sing-box
 
