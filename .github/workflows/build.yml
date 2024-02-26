@@ -194,7 +194,7 @@ jobs:
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing-box/${file}"
           done
 
-      - name: Delete workflow runs
+      - name: Delete old workflow runs
         uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
