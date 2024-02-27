@@ -59,23 +59,23 @@ jobs:
       - name: Generate netflix
         run: |
           mkdir -p ./clash/ ./sing-box/ ./ips
-          curl -sSL ${netflix} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' >> ./data/netflix
+          curl -sSL ${netflix} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,[^,]*$//' >> ./data/netflix
 
       - name: Generate telegram
         run: |
           curl -sSL ${telegram1} >> ./data/telegram
-          curl -sSL ${telegram2} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' >> ./data/telegram
+          curl -sSL ${telegram2} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,[^,]*$//' >> ./data/telegram
 
       - name: Generate private
         run: |
-          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,.*//g' > ./data/private
+          curl -sSL ${private} | grep -v '#' | grep 'IP-CIDR' | sed 's/[^,]*,//' | sed 's/,[^,]*$//' > ./data/private
 
       - name: Generate cn
         run: |
           curl -sSL ${cn1} | sed '/^\s*$/d' >> ./data/cn
           curl -sSL ${cn2} | sed '/^\s*$/d' >> ./data/cn
           curl -sSL ${cn3} | sed '/^\s*$/d' >> ./data/cn
-          curl -sSL ${cn4} | grep -v '#' | sed '/^\s*$/d' | sed 's/[^,]*,//' | sed 's/,.*//g' >> ./data/cn
+          curl -sSL ${cn4} | grep -v '#' | sed '/^\s*$/d' | sed 's/[^,]*,//' | sed 's/,[^,]*$//' >> ./data/cn
 
       - name: Build geoip files
         run: |
